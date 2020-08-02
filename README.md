@@ -17,8 +17,12 @@ El proyecto tiene todas las dependencias de Sails y Angular  (Las dependencias d
 El desarrollo del Back-End se hace desde la raíz del proyecto. El proyecto de Angular se encuentra localizado en el directorio assest/app.
 
 
-# Arrancar
+# Instalación
+Es necesario tener las dependencias de los frameworks principales como instalaciones globales.
+* `npm install sails -g `: Sails para el Back-End (Si da problemas, mirar la versión que se indica en package.json)
+* `npm install -g @angular/cli`: Angular para el Front-end (Si da problemas, mirar la versión que se indica en package.json)
 
+# Arrancar
 * `npm run start`: Arranca los dos proyectos en el entorno de desarrollo
 * `npm run build`: Empaqueta la aplicación web(Angular) para producción, la misma está configurada para que se despliegue en el directorio assets/dist/.
 * `npm run dev`: Inicia el Back (Sails) en desarrollo

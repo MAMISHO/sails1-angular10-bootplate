@@ -120,6 +120,8 @@
     }
   },
   "defaultProject": "test-cli",
-  "schematics": {
+  "schematics": {},
+  "cli": {
+    "analytics": "d84e2986-7c9f-4187-9062-890d4ddfd9a6"
   }
 }
