@@ -7,26 +7,42 @@
       "root": "",
       "sourceRoot": "assets/app",
       "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["ng2-charts", "chart.js"],
             "outputPath": "assets/dist",
             "index": "assets/app/index.html",
             "main": "assets/app/main.ts",
-            "tsConfig": "assets/app/tsconfig.app.json",
             "polyfills": "assets/app/polyfills.ts",
-            "assets": [
-              "assets/app/assets",
-              "assets/app/favicon.ico"
-            ],
-            "styles": [
-              "assets/app/styles.css"
-            ],
-            "scripts": []
+            "tsConfig": "assets/app/tsconfig.app.json",
+            "assets": ["assets/app/assets", "assets/app/favicon.ico"],
+            "styles": ["assets/app/styles.css"],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "assets/app/environments/environment.ts",
+                  "with": "assets/app/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -35,13 +51,7 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "assets/app/environments/environment.ts",
-                  "with": "assets/app/environments/environment.prod.ts"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
@@ -82,20 +92,15 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     },
     "test-cli-e2e": {
-      "root": "assets/e2e",
-      "sourceRoot": "assets/e2e",
+      "root": "assets/app",
+      "sourceRoot": "assets/app",
       "projectType": "application",
       "architect": {
         "e2e": {
@@ -120,7 +125,6 @@
     }
   },
   "defaultProject": "test-cli",
-  "schematics": {},
   "cli": {
     "analytics": "d84e2986-7c9f-4187-9062-890d4ddfd9a6"
   }
